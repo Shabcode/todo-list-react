@@ -6,4 +6,6 @@ const Navbar = () => {
       <h1>My Todo List</h1>
     </nav>
   );
-}
+};
+
+export default Navbar;
