@@ -1,18 +1,32 @@
-//import { useState } from 'react'
-import React from "react";
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import Footer from "./components/Footer";
-import SideBar from "./components/Sidebar";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Sidebar from './components/Sidebar';
+import Footer from './components/Footer';
+import Dashboard from './pages/Dashboard';
+import About from './pages/About';
+import NotFound from './pages/NotFound';
+import './App.css';
 
-const App = () => {
+function App() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <Home />
-      <Footer />
-    </div>
+    <Router>
+      <div className="app">
+        <Navbar />
+        <div className="main-content">
+          <Sidebar />
+          <div className="content">
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/about" element={<About />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    </Router>
   );
-};
+}
 
-export default App
+export default App;

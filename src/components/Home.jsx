@@ -1,33 +1,28 @@
-import React ,{useState} from "react";
-import SideBar from "./Sidebar";
-import List from "./List";
+import React from "react";
+import Footer from "../components/Footer";
+import TaskList from "../components/TaskList";
+import TaskForm from "../components/TaskForm";
+import tasksData from "../data/tasks.json";
+
 
 const Home = () => {
-    const [tasts,setTasks] = useState([
-            { "task": "Read the project brief", "completed": true},
-            { "task": "Create a project repository", "completed": false},
-            { "task": "Create React application using Vite", "completed": false},
-            { "task": "Finish Day 1 Development Tasks", "completed": false},
-            { "task": "Finish Day 1 Research Tasks", "completed": false},
-            { "task": "Finish Day 2 Development Tasks", "completed": false},
-            { "task": "Finish Day 2 Research Tasks", "completed": false}
-    ]);
+  const [tasks, setTasks] = useState(tasksData);
 
-    const deleteTask = (id) => {
-        setTasks(setTasks.filter(task => task.id !== id));
-    };
+  const addTask = (taskText) => {
+    const newTask = {task: taskText, completed: false};
+    setTasks({...tasks, newTask});
+  };
 
-    return (
-        <div className="flex">
-            <SideBar />
-            <main className="p-8 flex-1">
-                <h2 className="text-2x1 font-bold">
-                    Welcome  to the To-do List App</h2>
-                <p className="mt-2">Organize your tasks</p>
-                <List items={task} onDelete={deleteTask} />
-            </main>
-        </div>
-    );
+  return (
+    <div>
+      <main>
+        <h2>Welcome to the To-Do App</h2>
+        <TaskForm addTask={addTask} />
+        <TaskList tasks={tasks} setTasks={setTasks} />
+      </main>
+      <Footer />
+    </div>
+  );
 };
 
 export default Home;

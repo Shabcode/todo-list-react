@@ -1,11 +1,18 @@
-import React from "react";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+function Navbar() {
   return (
-    <nav className="bg-blue-600 text-white p-4 flex justify-between items-center">
-      <h1>My Todo List</h1>
+    <nav className="navbar">
+      <div className="navbar-logo">
+        <h1>Todo List App</h1>
+      </div>
+      <div className="navbar-links">
+        <Link to="/">Dashboard</Link>
+        <Link to="/about">About</Link>
+      </div>
     </nav>
   );
-};
+}
 
 export default Navbar;
