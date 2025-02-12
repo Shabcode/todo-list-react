@@ -1,30 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TodoItem from './TodoItem';
-import tasksData from '../data/tasks.json';
 
-function TodoList() {
-  const [tasks, setTasks] = useState(tasksData);
-
-  const handleDelete = (taskToDelete) => {
-    setTasks(tasks.filter(task => task.task !== taskToDelete));
-  };
-
-  const handleToggleComplete = (taskToToggle) => {
-    setTasks(tasks.map(task => 
-      task.task === taskToToggle 
-        ? { ...task, completed: !task.completed } 
-        : task
-    ));
-  };
-
+function TodoList({ tasks, onDelete, onToggleComplete }) {  // Receive props
   return (
     <div className="todo-list">
       {tasks.map((task, index) => (
-        <TodoItem 
-          key={index} 
-          task={task} 
-          onDelete={handleDelete}
-          onToggleComplete={handleToggleComplete}
+        <TodoItem
+          key={index}
+          task={task}
+          onDelete={onDelete}  // Pass down from Dashboard
+          onToggleComplete={onToggleComplete} // Pass down from Dashboard
         />
       ))}
     </div>
