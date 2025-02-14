@@ -16,8 +16,10 @@
 a {
   font-weight: 500;
   color: #646cff;
-  text-decoration: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -25,6 +27,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
+  flex-direction: column;
   min-width: 320px;
   min-height: 100vh;
   padding: 0;
@@ -37,33 +40,37 @@ h1 {
 
 .navbar {
   color: white;
+  background-color: #1a1a1a;
   padding: 1rem;
   text-align: center;
-  width: 100%; /* Ensure navbar takes full width */
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar {
-  background: #3333337a;
+  background: rgba(51, 51, 51, 0.8);
   padding: 1rem;
-  flex-basis: 200px; /* Or a percentage like 20% */
+  flex-basis: 200px;
   flex-shrink: 0;
-  height: 100%; /* Or calc(100vh - your_footer_height) if you have a fixed footer */
+  height: 100vh;
+  box-sizing: border-box;
 }
 
 .footer {
-  color: #3333337a;
-  background: #3333337a;
+  color: white;
+  background: #333;
   text-align: center;
   padding: 1rem;
-  position: sticky; /* Or position: relative if you don't want it sticky */
+  position: sticky;
   bottom: 0;
   width: 100%;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .task-list {
-  margin-left: 0; /* Remove fixed left margin */
+  margin-left: 0;
   padding: 20px;
-  flex: 1; /* Allow task list to grow and fill available space */
+  flex: 1;
 }
 
 .task-item {
@@ -71,6 +78,9 @@ h1 {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  border-radius: 8px;
 }
 
 button {
@@ -81,12 +91,16 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  color: white;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
 }
+
 button:hover {
   border-color: #646cff;
+  background-color: #333;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -97,11 +111,24 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
+    color: black;
+  }
+
+  .navbar {
+    background-color: #f0f0f0;
+    color: black;
+  }
+
+  .footer {
+    background-color: #e0e0e0;
+    color: black;
   }
 }
 
@@ -125,5 +152,6 @@ button:focus-visible {
   .task-item {
     flex-direction: column;
     align-items: flex-start;
+    gap: 10px;
   }
 }
